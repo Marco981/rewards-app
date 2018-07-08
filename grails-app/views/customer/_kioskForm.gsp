@@ -7,13 +7,13 @@
 	
 	<div class="row">
 		<div class="col-sm-offset-1 col-sm-5">
-			<h3>Welcome back Mike.</h3> 
-			<p>You have 3 points.</p>
+			<h3>${welcomeMessage}</h3> 
+			
 		</div>
 		<div class="col-sm-6">
-			<g:textField name="phone" class="form-control" placeholder="Enter your cell number to check in" />
+			<g:textField name="phone" class="form-control" placeholder="Enter your cell number to check in" value="${customerInstance?.phone }" />
 			<div class="row">
-				<h4></h4>
+				<h3></h3>
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
@@ -27,7 +27,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<h4></h4>
+				<h3></h3>
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
@@ -41,7 +41,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<h4></h4>
+				<h3></h3>
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
@@ -55,7 +55,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<h4></h4>
+				<h3></h3>
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
@@ -65,7 +65,7 @@
 					<input class="btn btn-primary btn-lg btn-block" type="button" name="pad" value="0" onclick="padkey(this.value)"/>
 				</div>
 				<div class="col-sm-4">
-					<input class="btn btn-success btn-lg btn-block" type="button" name="pad" value="Go" onclick=""/>
+					<g:submitButton class="btn btn-success btn-lg btn-block" name="pad" value="Go" onclick=""/>
 				</div>
 			</div>
 		</div>

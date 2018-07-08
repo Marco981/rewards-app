@@ -6,13 +6,19 @@ class CustomerController {
 	def calculationsService
 	
 	def lookup() {
-		def customerInstance = Customer.findAllByFirstNameLike("B%")
+		def customerInstance = Customer.findByPhone(params.id)
 		[customerInstanceList:customerInstance]
 	}
 
     def index() {
 		params.max = 10
 		[customerInstanceList: Customer.list(params), customerInstanceCount: Customer.count()]
+	}
+	
+	def customerLookup(Customer lookupInstance) {
+		def (customerInstance, welcomeMessage) = calculationsService.processCheckin(lookupInstance)
+		render(view:"checkin",model:[customerInstance: customerInstance, welcomeMessage: welcomeMessage])
+
 	}
 	
 	def checkin() {
@@ -50,5 +56,15 @@ class CustomerController {
 		def customerInstance = Customer.get(id)
 		customerInstance.delete()
 		redirect(action:"index")
+	}
+	
+	def profile() {
+		def customerInstance = Customer.findByPhone(params.id)
+		[customerInstance: customerInstance]
+	}
+	
+	def updateProfile(Customer customerInstance) {
+		customerInstance.save()
+		render(view:"profile", model:[customerInstance:customerInstance])
 	}
 }
